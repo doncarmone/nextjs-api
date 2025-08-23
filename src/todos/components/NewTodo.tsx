@@ -4,7 +4,6 @@ import { IoTrashOutline } from 'react-icons/io5';
 import * as todosApi from '@/todos/helpers/todos';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { the } from '../../../.next/types/validator';
 
 export const NewTodo = () => {
   const router = useRouter();
