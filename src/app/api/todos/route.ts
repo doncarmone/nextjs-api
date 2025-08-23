@@ -57,6 +57,27 @@ export async function POST(request: Request) {
             error: error
         }, { status: 400 });
     }
+}
 
+export async function DELETE() {
 
+    try {
+
+        await prisma.todo.deleteMany({
+            where: {
+                completed: true
+            }
+        });
+
+        return NextResponse.json({
+            message: 'Deleted completed todos successfully',
+            flag: true,
+        });
+    } catch (error) {
+        return NextResponse.json({
+            message: 'Invalid request body',
+            flag: false,
+            error: error
+        }, { status: 400 });
+    }
 }
