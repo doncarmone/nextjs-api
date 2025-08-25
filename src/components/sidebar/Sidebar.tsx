@@ -20,7 +20,7 @@ const menuItems = [
     title: 'Rest TODOS',
   },
   {
-    path: '/dashboard/server-tools',
+    path: '/dashboard/server-todos',
     icon: <IoListOutline size={30} />,
     title: 'Server Actions',
   },
