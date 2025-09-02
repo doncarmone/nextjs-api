@@ -5,6 +5,7 @@ import { IoTrashOutline } from 'react-icons/io5';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { addTodo, deleteCompleted } from '../actions/todo-actions';
+import { createTodo } from '../helpers/todos';
 
 export const NewTodo = () => {
   const router = useRouter();
@@ -15,16 +16,13 @@ export const NewTodo = () => {
     if (!description) return;
     // await todosApi.createTodo(description);
 
-    await addTodo(description);
+    // await addTodo(description);
+
+    await createTodo(description);
 
     setDescription('');
-    // router.refresh();
+    router.refresh();
   };
-
-  // const deleteCompleted = async () => {
-  //   await todosApi.deleteCompletedTodos();
-  //   router.refresh();
-  // };
 
   return (
     <form className='flex w-full'>

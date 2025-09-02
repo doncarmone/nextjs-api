@@ -21,6 +21,11 @@ npx prisma generate
 
 ```
 
+## Note:
+
+**user\_**: test@gmail.com
+**password\_**: root
+
 # Prod
 
 # Stage

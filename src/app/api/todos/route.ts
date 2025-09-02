@@ -1,3 +1,4 @@
+import { getUserSessionServer } from '@/app/auth/actions/auth-actions';
 import prisma from '@/lib/prisma';
 import { NextResponse, NextRequest } from 'next/server'
 import * as yup from 'yup';
@@ -36,13 +37,20 @@ const postSchema = yup.object({
 
 export async function POST(request: Request) {
 
+    const user = await getUserSessionServer();
+
+    if (!user) {
+        return NextResponse.json({ message: 'Unauthorized', flag: false }, { status: 401 });
+    }
+
     try {
         const { completed, description } = await postSchema.validate(await request.json());
 
         const todo = await prisma.todo.create({
             data: {
                 description,
-                completed
+                completed,
+                userId: user.id
             }
         });
         return NextResponse.json({
